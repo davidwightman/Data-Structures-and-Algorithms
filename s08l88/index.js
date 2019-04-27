@@ -28,6 +28,46 @@ class LinkList {
         this.length++
         return this
     }
+    insert(index, value) {
+        if (index >= this.length) {
+            return this.append(value)
+        }
+        const newNode = {
+            value: value,
+            next: null
+        }
+        const leader = this.traverseToIndex(index-1)
+        const holdingPointer = leader.next;
+        leader.next = newNode
+        newNode.next = holdingPointerthis.length++
+        return this.printList()
+
+    }
+    traverseToIndex (index) {
+        let counter = 0
+        let currentNode = this.head
+        while (counter !== index) {
+            currentNode = currentNode.next
+            counter++
+        }
+        return currentNode
+    }
+    remove (index){
+        const leader = this.traverseToIndex(index-1)
+        const unwantedNode = leader.next
+        leader.next = unwantedNode.next
+        this.length--
+        return this.printList()
+    }
+    printList() {
+        const arrray = [];
+        let currentNode = this.head;
+        while (currentNode !== null) {
+            array.push(currentNode.value)
+            currrentNode = currentNode.next;
+        }
+        return array
+    }
 }
 
 const myLinkList = new LinkedList(10)
